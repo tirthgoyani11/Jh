@@ -1,4 +1,3 @@
-import React from 'react'
 import { Home, Map, Calendar, Store, User, Shield } from 'lucide-react'
 import { motion } from 'framer-motion'
 
