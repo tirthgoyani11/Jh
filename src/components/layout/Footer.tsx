@@ -88,7 +88,7 @@ const Footer = () => {
               </div>
               <div className="pt-2 border-t border-jungle-green-700">
                 <p className="text-xs text-jungle-green-300">
-                  Developed under Smart India Hackathon 2024
+                  Developed under Smart India Hackathon 2025
                 </p>
               </div>
             </div>
@@ -116,7 +116,7 @@ const Footer = () => {
             </div>
             
             <div className="text-center md:text-right text-sm text-jungle-green-200">
-              <p>&copy; 2024 Government of Jharkhand. All rights reserved.</p>
+              <p>&copy; 2025 Government of Jharkhand. All rights reserved.</p>
               <p className="text-xs mt-1">
                 Made with ❤️ for sustainable tourism in Jharkhand
               </p>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Leaf, Search, Globe, X } from 'lucide-react';
+import { Search, Globe, X } from 'lucide-react';
 import { motion } from 'framer-motion';
+import logoSvg from '../../assets/logo.svg';
 
 const CleanAppHeader: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -16,8 +17,8 @@ const CleanAppHeader: React.FC = () => {
               className="flex items-center space-x-3"
               whileHover={{ scale: 1.02 }}
             >
-              <div className="bg-green-600 p-2 rounded-xl">
-                <Leaf className="w-6 h-6 text-white" />
+              <div className="p-1">
+                <img src={logoSvg} alt="Jharkhand Tourism Logo" className="w-12 h-12" />
               </div>
               <div>
                 <h1 className="text-lg font-bold text-gray-900">Jharkhand</h1>

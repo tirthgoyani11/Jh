@@ -431,7 +431,7 @@ const AboutPage = () => {
                 Developed under SIH 2025 by Team Digital Drifters
               </p>
               <p className="text-sm text-gray-400">
-                © 2024 Government of Jharkhand. All rights reserved.
+                © 2025 Government of Jharkhand. All rights reserved.
               </p>
             </div>
           </div>

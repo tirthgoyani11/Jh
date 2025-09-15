@@ -1,5 +1,6 @@
 import React from 'react';
-import { Bell, Leaf, Globe, ChevronDown } from 'lucide-react';
+import { Bell, Globe, ChevronDown } from 'lucide-react';
+import logoSvg from '../../assets/logo.svg';
 
 interface AppHeaderProps {
   title?: string;
@@ -17,8 +18,8 @@ const AppHeader: React.FC<AppHeaderProps> = ({
       <div className="flex items-center justify-between">
         {/* Logo and Title */}
         <div className="flex items-center space-x-3">
-          <div className="flex items-center justify-center w-10 h-10 bg-jungle-green-500 rounded-lg">
-            <Leaf className="w-6 h-6 text-white" />
+          <div className="flex items-center justify-center w-14 h-14">
+            <img src={logoSvg} alt="Jharkhand Tourism Logo" className="w-12 h-12" />
           </div>
           <div>
             <h1 className="text-heading font-heading text-jungle-green-600">

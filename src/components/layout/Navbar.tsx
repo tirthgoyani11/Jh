@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, Globe, User, Menu, X, Leaf } from 'lucide-react';
+import { ChevronDown, Globe, User, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logoSvg from '../../assets/logo.svg';
 
 const Navbar = () => {
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
@@ -38,8 +39,8 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="bg-gradient-to-r from-jungle-green-500 to-jungle-green-600 p-2 rounded-xl">
-              <Leaf className="w-6 h-6 text-white" />
+            <div className="p-1">
+              <img src={logoSvg} alt="Jharkhand Tourism Logo" className="w-12 h-12" />
             </div>
             <div>
               <h1 className="text-xl font-bold text-gray-900">Explore</h1>

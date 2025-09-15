@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Leaf, Bell, Globe, Search, X, MapPin, Cloud, Sun } from 'lucide-react';
+import { Bell, Globe, Search, X, MapPin, Cloud, Sun } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logoSvg from '../../assets/logo.svg';
 
 interface EnhancedAppHeaderProps {
   title?: string;
@@ -86,8 +87,8 @@ const EnhancedAppHeader: React.FC<EnhancedAppHeaderProps> = ({
                 whileTap={{ scale: 0.98 }}
               >
                 <div className="relative">
-                  <div className="bg-gradient-to-br from-jungle-green-500 via-jungle-green-600 to-jungle-green-700 p-2.5 rounded-xl shadow-lg">
-                    <Leaf className="w-6 h-6 text-white" />
+                  <div className="p-2.5">
+                    <img src={logoSvg} alt="Jharkhand Tourism Logo" className="w-12 h-12" />
                   </div>
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-warm-yellow-400 to-warm-yellow-500 rounded-full animate-pulse"></div>
                 </div>
