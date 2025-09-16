@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback, memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Calendar,
@@ -1029,7 +1029,7 @@ const SuperEnhancedPlannerPage: React.FC = () => {
           Choose Your Travel Style
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {memoizedTravelStyles.map((style) => (
+          {stableTravelStyles.map((style: any) => (
             <TravelStyleButton
               key={style.id}
               style={style}
@@ -1056,7 +1056,7 @@ const SuperEnhancedPlannerPage: React.FC = () => {
                 Accommodation Preference
               </h4>
               <div className="space-y-3">
-                {memoizedAccommodationTypes.map((acc) => (
+                {stableAccommodationTypes.map((acc: any) => (
                   <label key={acc.id} className="flex items-center space-x-3 cursor-pointer">
                     <input
                       type="radio"
@@ -1090,7 +1090,7 @@ const SuperEnhancedPlannerPage: React.FC = () => {
                 Transportation
               </h4>
               <div className="space-y-3">
-                {memoizedTransportOptions.map((transport) => (
+                {stableTransportOptions.map((transport: any) => (
                   <label key={transport.id} className="flex items-center space-x-3 cursor-pointer">
                     <input
                       type="radio"
