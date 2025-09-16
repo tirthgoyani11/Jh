@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import InteractiveMap from '../components/InteractiveMap';
 import { 
   MapPin, Camera, Navigation, Search, Star, Clock, Mountain, TreePine, Building2, Heart,
   X, Volume2, VolumeX, RotateCcw, Maximize2, Filter, ArrowUpRight, Car, Bus, Train,
@@ -75,6 +76,7 @@ const ExplorePage: React.FC = () => {
   const [audioPlaying, setAudioPlaying] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [mapLoaded, setMapLoaded] = useState(false);
+  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | undefined>(undefined);
 
   const categories: Category[] = [
     { id: 'all', label: 'All', icon: MapPin, color: 'bg-gray-500' },
@@ -202,8 +204,12 @@ const ExplorePage: React.FC = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          console.log('User location:', position.coords.latitude, position.coords.longitude);
-          // Can be used for map centering in future
+          const location = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          setUserLocation(location);
+          console.log('User location:', location);
         },
         (error) => console.log('Location error:', error)
       );
@@ -230,60 +236,14 @@ const ExplorePage: React.FC = () => {
 
   const renderInteractiveMap = () => (
     <div className="relative h-96 bg-gradient-to-br from-jungle-green-100 to-jungle-green-200 rounded-tourism overflow-hidden">
-      {/* Map Container (will integrate Mapbox here) */}
-      <div className="absolute inset-0 bg-jungle-green-500 opacity-10"></div>
-      
-      {/* Mock Interactive Map */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="text-center z-10">
-          <MapPin className="w-12 h-12 text-jungle-green-600 mx-auto mb-2" />
-          <p className="text-jungle-green-700 font-medium">Interactive Map View</p>
-          <p className="text-sm text-jungle-green-600 mb-4">Real-time POI discovery</p>
-          {!mapLoaded && (
-            <button 
-              onClick={() => setMapLoaded(true)}
-              className="bg-jungle-green-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-jungle-green-600 transition-colors"
-            >
-              Load Interactive Map
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* POI Markers */}
-      {filteredPlaces.map((place, index) => (
-        <motion.div
-          key={place.id}
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: index * 0.1 }}
-          className={`absolute w-6 h-6 rounded-full cursor-pointer transform hover:scale-125 transition-transform ${
-            categories.find(c => c.id === place.category)?.color || 'bg-gray-500'
-          }`}
-          style={{
-            top: `${20 + index * 15}%`,
-            left: `${15 + index * 20}%`
-          }}
-          onClick={() => handlePOISelect(place)}
-        >
-          <div className="absolute -top-8 -left-12 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded opacity-0 hover:opacity-100 transition-opacity whitespace-nowrap">
-            {place.name}
-          </div>
-        </motion.div>
-      ))}
-
-      {/* Map Controls */}
-      <div className="absolute top-4 right-4 flex flex-col space-y-2">
-        <button 
-          onClick={getUserLocation}
-          className="bg-white p-2 rounded-lg shadow-md hover:shadow-lg transition-shadow"
-        >
-          <Navigation className="w-5 h-5 text-jungle-green-600" />
-        </button>
-        <button className="bg-white p-2 rounded-lg shadow-md hover:shadow-lg transition-shadow">
-          <Search className="w-5 h-5 text-jungle-green-600" />
-        </button>
-      </div>
+      {/* Interactive Map Integration */}
+      <InteractiveMap
+        places={filteredPlaces}
+        selectedCategory={selectedCategory}
+        onPlaceSelect={handlePOISelect}
+        userLocation={userLocation}
+        className="w-full h-full rounded-tourism"
+      />
     </div>
   );
 

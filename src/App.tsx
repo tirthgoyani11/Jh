@@ -5,6 +5,7 @@ import ChatbotWidget from './components/widgets/ChatbotWidget';
 import SOSWidget from './components/widgets/SOSWidget';
 import HomePage from './pages/RouterHomePage';
 import PlannerPage from './pages/PlannerPage';
+import CleanSuperEnhancedPlannerPage from './pages/CleanSuperEnhancedPlannerPage';
 import ExplorePage from './pages/ExplorePage';
 import MarketplacePage from './pages/MarketplacePage';
 import ProfilePage from './pages/ProfilePage';
@@ -21,7 +22,8 @@ function App() {
         <main className="pt-16">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/planner" element={<PlannerPage />} />
+            <Route path="/planner" element={<CleanSuperEnhancedPlannerPage />} />
+            <Route path="/planner-basic" element={<PlannerPage />} />
             <Route path="/explore" element={<ExplorePage />} />
             <Route path="/marketplace" element={<MarketplacePage />} />
             <Route path="/profile" element={<ProfilePage />} />
